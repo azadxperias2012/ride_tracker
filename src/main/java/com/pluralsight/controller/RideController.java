@@ -17,15 +17,15 @@ public class RideController {
 
 	@Autowired
 	private RideService rideService;
-	
+
+    @RequestMapping(value = "/rides", method = RequestMethod.POST)
+    public @ResponseBody Ride createRide(@RequestBody Ride ride) {
+        return rideService.createRide(ride);
+    }
+
 	@RequestMapping(value = "/rides", method = RequestMethod.GET)
 	public @ResponseBody List<Ride> getRides() {
 		return rideService.getRides();
 	}
 
-	@RequestMapping(value = "/ride", method = RequestMethod.PUT)
-    public @ResponseBody Ride createRide(@RequestBody Ride ride) {
-	    return rideService.createRide(ride);
-    }
-	
 }

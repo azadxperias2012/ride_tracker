@@ -13,6 +13,19 @@ import org.junit.Test;
 
 public class RestControllerTest {
 
+    @Test
+    public void testCreateRide() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        Ride ride = new Ride();
+        ride.setName("Yellow Fork Trail");
+        ride.setDuration(33);
+
+        restTemplate.postForObject("http://localhost:8080/ride_tracker/rides",
+                ride, Ride.class);
+        System.out.println("Ride: " + ride);
+    }
+
 	@Test(timeout = 5000)
 	public void testGetRides() {
 		RestTemplate restTemplate = new RestTemplate();
@@ -26,16 +39,5 @@ public class RestControllerTest {
 		for (Ride ride : rides) {
 			System.out.println("Ride name: " + ride.getName());
 		}
-	}
-
-	@Test
-	public void testCreateRide() {
-		RestTemplate restTemplate = new RestTemplate();
-
-		Ride ride = new Ride();
-		ride.setName("Round Valley Ride");
-		ride.setDuration(38);
-
-		restTemplate.put("http://localhost:8080/ride_tracker/ride", ride);
 	}
 }
