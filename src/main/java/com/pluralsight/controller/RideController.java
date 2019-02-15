@@ -41,4 +41,10 @@ public class RideController {
         return null;
     }
 
+    @RequestMapping(value = "/rides/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody Object deleteRide(@PathVariable(value = "id") Integer id) {
+        rideService.deleteRide(id);
+        return null;
+    }
+
 }
