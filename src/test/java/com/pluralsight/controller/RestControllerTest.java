@@ -18,7 +18,7 @@ public class RestControllerTest {
         RestTemplate restTemplate = new RestTemplate();
 
         Ride ride = new Ride();
-        ride.setName("Yellow Fork Trail");
+        ride.setName("Bobsled Trail");
         ride.setDuration(33);
 
         restTemplate.postForObject("http://localhost:8080/ride_tracker/rides",
@@ -73,6 +73,12 @@ public class RestControllerTest {
     public void testDelete() {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete("http://localhost:8080/ride_tracker/rides/6");
+    }
+
+    @Test(timeout = 10000)
+    public void test() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject("http://localhost:8080/ride_tracker/test", Ride.class);
     }
 
 }
